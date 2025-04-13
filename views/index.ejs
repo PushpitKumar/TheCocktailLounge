@@ -1,0 +1,147 @@
+<%- include("partials/header.ejs") %>
+<section id="home" class="home-section" data-scroll-index="0">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 welcome-banner">
+        <h1 class="welcome-title">Discover Your Perfect Cocktail!</h1>
+        <p class="welcome-msg">Explore a wide assortment of drinks. This is the definitive hub for all cocktail lovers and a bartender's best buddy!</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="featured" class="featured-section" data-scroll-index="1">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="featured-heading">Explore Cocktails</h3>
+        <div class="filter-options d-flex">
+          <select id="filter" class="form-select" aria-label="Cocktail Filter Options">
+            <option value="" disabled selected>Filter Drinks</option>
+            <!--Group: By Category-->
+            <optgroup label="By Category">
+              <option value="Name" selected>Name (A-Z)</option>
+              <option value="Alcoholic">Alcoholic</option>
+              <option value="Non_Alcoholic">Non-Alcoholic</option>
+              <option value="Ordinary_Drink">Ordinary Drinks</option>
+              <option value="Cocktail">Cocktails</option>
+              <option value="Cocktail_Glass">Served in Cocktail Glass</option>
+              <option value="Champagne_flute">Served in Champagne Flute</option>
+            </optgroup>
+            <!--Group: Special Filters-->
+            <optgroup label="By Speciality">
+              <option value="Popular">Popular Drinks</option>
+              <option value="New">New Drinks</option>
+              <option value="Gin">Gin Based</option>
+              <option value="Vodka">Vodka Based</option>
+              <option value="Rum">Rum Based</option>
+              <option value="Tequila">Tequila Based</option>
+              <option value="Scotch">Scotch Based</option>
+            </optgroup>
+          </select>
+          <div class="search-wrapper">
+            <input type="search" id="search" class="form-control" placeholder="Search any drink..." />
+            <div id="suggestions" class="suggestions-container gradient-background"></div>
+          </div>
+        </div>
+        <div class="letters">
+          <a href="">A</a>
+          <a href="#">B</a>
+          <a href="">C</a>
+          <a href="">D</a>
+          <a href="">E</a>
+          <a href="">F</a>
+          <a href="">G</a>
+          <a href="">H</a>
+          <a href="">I</a>
+          <a href="">J</a>
+          <a href="">K</a>
+          <a href="">L</a>
+          <a href="">M</a>
+          <a href="">N</a>
+          <a href="">O</a>
+          <a href="">P</a>
+          <a href="">Q</a>
+          <a href="">R</a>
+          <a href="">S</a>
+          <a href="">T</a>
+          <a href="">U</a>
+          <a href="">V</a>
+          <a href="">W</a>
+          <a href="">X</a>
+          <a href="">Y</a>
+          <a href="">Z</a>
+        </div>
+      </div>
+    </div>
+    <div class="row g-5 cocktail-container">
+      <% if (cocktails && cocktails.drinks && cocktails.drinks.length > 0) {
+        cocktails.drinks.forEach(drink => { %>
+          <div class="col-lg-4 col-md-6 col-sm-6 col-4 d-flex justify-content-center px-0 main-div">
+            <div class="d-flex justify-content-center">
+              <div class="card flex-fill drink-card" data-id="<%= drink.idDrink %>">
+                <img src="<%= drink.strDrinkThumb %>" class="card-img-top" alt="Cocktail Image" />
+                <div class="card-body gradient-background d-flex flex-column">
+                  <h5 class="card-title"><%= drink.strDrink %></h5>
+                  <div class="card-text lead">
+                    <%= drink.strCategory %> | <%= drink.strAlcoholic %> <br/>
+                    Served in: <%= drink.strGlass %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% });
+      } %>
+    </div>
+    <!--Loading Overlay and loading dots-->
+    <div class="loading-overlay">
+      <div id="loading" class="loading-dots">
+        <span>.</span>
+        <span>.</span>
+        <span>.</span>
+      </div>
+    </div>
+    <!--Modal for Drink details-->
+    <div class="modal fade" id="drink-modal" tabindex="-1" role="dialog" aria-labelledby="drink-modal-label" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+          <!--Populate dynamically-->
+      </div>
+    </div>
+  </div>
+</section>
+<section id="drink-of-the-day" class="drink-of-the-day-section" data-scroll-index="2">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 special-heading-container d-flex justify-content-center mb-3 mt-3">
+        <h3 class="special-heading">Today's Special</h3>
+      </div>
+    </div>
+    <div class="row special-container">
+      <!--Populate dynamically-->
+    </div>
+  </div>
+</section>
+<section id="contact" class="contact-section" data-scroll-index="3">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+        <div class="contact-header">
+          <h2 class="contact-heading">Get In Touch</h2>
+          <p class="contact-invite">Have any queries or suggestions?</p>
+          <p class="contact-para">Please feel free to drop a mail. We can talk over a drink!</p>
+        </div>
+      </div>
+      <div class="col-12 d-flex justify-content-center">
+        <div class="contact-main">
+          <a href="mailto:pushpit.kumar99@gmail.com" class="gmail-button">
+            <img src="../images/mail.png" class="gmail-icon img-fluid" alt="Gmail Icon">
+            <p>pushpit.kumar9911@gmail.com</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<%- include("partials/footer.ejs") %>
